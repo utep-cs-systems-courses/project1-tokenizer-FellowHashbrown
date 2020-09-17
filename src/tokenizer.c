@@ -48,7 +48,9 @@ int count_words(char *str)
 {
   // Count the number of spaces in the string
   int spaces = 0;
-  while (non_space_char(str[spaces]) && str[spaces] != '\0') { spaces++; }
+  for (int i = 0; i < str[i] != '\0'; i++) {
+    if (space_char(str[i])) { spaces++; }
+  }
   return spaces + 1;
 }
 
@@ -61,7 +63,7 @@ char *copy_str(char *inStr, short len)
   for (i = 0; i < len; i++) {
     c[i] = inStr[i];
   }
-  c[len] = '\0';
+  c[len] = 0;
   return c;
 }
 
@@ -78,36 +80,31 @@ char **tokenize(char *str)
 {
   // Tokens should be an array of pointers
   int num_words = count_words(str);
-  char **tokens[num_words];
+  char **tokens = malloc(sizeof(char*) * (num_words + 1));
   for (int i = 0; i < num_words; i++) {
-
-    // Each word should come from word_terminator
     str = word_start(str);
     char *temp = word_terminator(str);
-    char *new_str = copy_str(str, (temp - str) / sizeof(char));
+    tokens[i] = copy_str(str, (temp - str) / sizeof(char));
     str = temp;
-    (*tokens)[i] = new_str; 
   }
-  return *tokens;
+  tokens[num_words] = 0;
+  return tokens;
 }
 
 /* Prints all tokens. */
 void print_tokens(char **tokens)
 {
-  int i = 0;
-  while (1) {
-    char temp = (*tokens)[i++];
-    if (temp == '\0') { break; }
-    else { printf("%s\n", temp); }
+  for (int i = 0; tokens[i] != 0; i++) {
+    printf("%s\n", tokens[i]);
   }
 }
 
 /* Frees all tokens and the vector containing them. */
 void free_tokens(char **tokens)
 {
-  int i = 0;
-  while (1) {
-    free(tokens[i++]);
+  for (int i = 0; tokens[i] != 0; i++) {
+    free(tokens[i]);
   }
+  free(tokens);
 }
 
