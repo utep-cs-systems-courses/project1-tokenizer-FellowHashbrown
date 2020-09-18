@@ -1,12 +1,22 @@
 Project 1: Tokenizer
 ====================
-# Instructions:
 
-You should document your tokenizer in this file.
+## How it Works
 
-This file is written in the refreshingly simple `markdown` text
-formatting language.
+When starting up the tokenizer (by doing `./tokenizer`), a message appears
+telling you exactly what you can do with it. The base command delimiter is
+`!`.
 
-To learn about text formatting using markdown, we encourage you to examine 
- - [../README.md](../README.md)
- - the online [Markdown Guide](https://www.markdownguide.org/).
+### Entering Text
+
+You can just enter in any string of text (limit of 200 characters) and the
+tokenizer will remember that for you.
+
+### Entering Commands
+
+There are 2 simple commands.
+ * `!q` will quit the tokenizer and empty out the history of text that was entered.
+ * `!n` (where `n` is a number) will show you that number entry that you
+ entered. If none was found, a simple message of `Not Found` will be
+ displayed.
+

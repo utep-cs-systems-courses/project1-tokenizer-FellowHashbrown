@@ -39,16 +39,13 @@ int main()
 
       // Check if the input is a number
       else if (value != 0) {
-	printf("The number is %d \n", value);
 	printf("%s\n", get_history(history, value));
       }
     }
 
     // The input does not start with !
     else {
-      char **tokens = tokenize(input);
-      print_tokens(tokens);
-      add_history(history, copy_str(input));
+      add_history(history, copy_str(input, sizeof(input)));
     }
   }
 }

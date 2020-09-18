@@ -19,10 +19,10 @@ void add_history(List *list, char *str)
 
   // Find the next empty node to insert the string into
   Item *temp = list->root;
-  int id = 0;
+  int id = 1;
   while(temp->next != NULL) {
     temp = temp->next;
-    id += 1;
+    id++;
   }
 
   // Call malloc to create memory for the next empty node
@@ -43,7 +43,7 @@ char *get_history(List *list, int id)
     temp = temp->next;
   }
   
-  return NULL;
+  return "Not Found";
 }
 
 /* Print the entire contents of the list. */
