@@ -46,6 +46,9 @@ int main()
       // Check if the input is a number
       else if (value != 0) {
 	printf("%s\n", get_history(history, value));
+	tokens = tokenize(get_history(history, value));
+	print_tokens(tokens);
+	free_tokens(tokens);
       }
     }
 
