@@ -51,7 +51,9 @@ void print_history(List *list)
 {
   Item *temp = list->root;
   while(temp != NULL) {
-    printf("#%d = %s\n", temp->id, temp->str);
+    if (temp->id != 0) {
+      printf("%d = %s\n", temp->id, temp->str);
+    }
     temp = temp->next;
   }
 }

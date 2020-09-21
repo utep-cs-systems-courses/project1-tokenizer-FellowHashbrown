@@ -22,11 +22,12 @@ int main()
   while (1) {
 
     // Tell the user what they can enter and ask for input. Separate the integer from the command if given. 
-    printf("You can type anything really. \n\tDo !q to exit the program. \n\tDo !n where n is an integer to get that n-th entry you typed in earlier!\n");
+    printf("You can type anything really. \n\tDo !q to exit the program.\n\tDo !a to see sentences you've previously entered :)\n\tDo !n where n is an integer to get that n-th entry you typed in earlier!\n");
     printf("# ");
     scanf("%[^\n]s", input);
     sscanf(input, "%*c%d", &value);
     clear_buffer(); // Clear the buffer so an infinite loop does not magically appear
+    char **tokens;
     
     // Check if the input starts with an !
     if (input[0] == '!') {
@@ -37,6 +38,11 @@ int main()
 	break;
       }
 
+      // Check if the input has an a (history)
+      else if (input[1] == 'a') {
+	print_history(history);
+      }
+
       // Check if the input is a number
       else if (value != 0) {
 	printf("%s\n", get_history(history, value));
@@ -45,7 +51,11 @@ int main()
 
     // The input does not start with !
     else {
-      add_history(history, copy_str(input, sizeof(input)));
+      tokens = tokenize(input);
+      print_tokens(tokens);
+      free_tokens(tokens);
+      add_history(history, copy_str(input, MAX_LEN));
     }
   }
+  free_history(history);
 }
