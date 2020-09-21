@@ -14,8 +14,9 @@ tokenizer will remember that for you.
 
 ### Entering Commands
 
-There are 2 simple commands.
+There are 3 simple commands.
  * `!q` will quit the tokenizer and empty out the history of text that was entered.
+ * `!a` will print out all the sentences that were entered previously including the number they are associated with.
  * `!n` (where `n` is a number) will show you that number entry that you
  entered. If none was found, a simple message of `Not Found` will be
  displayed.
